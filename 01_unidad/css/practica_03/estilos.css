@@ -1,0 +1,34 @@
+img {
+    width: 300px;
+}
+
+h1 {
+    color: brown;
+}
+
+.contenido {
+    color: crimson;
+}
+
+.titulo_principal {
+    color: darkblue;
+}
+
+a {
+    display: inline-block;
+    width: 200px;
+    border: 1px solid black;
+    padding: 2px;
+    margin: 2px;;
+}
+
+a:hover {
+    background-color: black;
+    color: white;
+}
+
+div > p {
+    color:blue
+}
+
+h1 + p {font-style: italic;}

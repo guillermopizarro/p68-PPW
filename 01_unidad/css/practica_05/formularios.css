@@ -1,0 +1,14 @@
+input[type="text"] {
+    border: 1px solid gray;
+}
+
+.caja1 {
+    position: absolute;
+    z-index: 10;
+    background-color: aliceblue;
+}
+.caja2 {
+    position: absolute;
+    z-index: 2;
+    background-color: aliceblue;
+}
