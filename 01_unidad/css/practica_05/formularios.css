@@ -4,11 +4,13 @@ input[type="text"] {
 
 .caja1 {
     position: absolute;
+    width: 1000px;
     z-index: 10;
     background-color: aliceblue;
 }
 .caja2 {
     position: absolute;
+    width: 1000px;
     z-index: 2;
     background-color: aliceblue;
 }

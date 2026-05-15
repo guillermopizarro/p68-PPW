@@ -1,0 +1,28 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    /*flex-wrap: wrap;*/
+    justify-content: center;
+    align-items: center;
+}
+
+.item-1 {
+    width: 100px;
+    background-color: lightblue;
+    text-align: center;
+    padding: 20px;
+    margin: 5px;
+}
+
+.item-2 {
+    width: 200px;
+    background-color: lightblue;
+    padding: 20px;
+    margin: 5px;
+}
