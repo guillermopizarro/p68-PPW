@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Formulario de registro con CSS Grid y Flexbox" />
+  <title>Registro — Nexform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&amp;family=DM+Sans:ital,wght@0,300;0,400;1,300&amp;display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="page-grid">
+
+    <!-- ═══ SIDEBAR ═══ -->
+    <aside class="sidebar">
+
+      <div class="sidebar-logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 20 20" fill="#0d0f14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M10 2L18 7V13L10 18L2 13V7L10 2Z" />
+          </svg>
+        </div>
+        <span class="logo-text">NEXFORM</span>
+      </div>
+
+      <div class="sidebar-copy">
+        <h1 class="sidebar-title">Crea tu<br /><span class="accent">cuenta gratis</span></h1>
+        <p class="sidebar-desc">
+          Únete a miles de equipos que ya usan nuestra plataforma
+          para gestionar sus proyectos con eficiencia.
+        </p>
+      </div>
+
+      <ul class="feature-list">
+        <li><span class="dot" aria-hidden="true"></span> Sin tarjeta de crédito requerida</li>
+        <li><span class="dot" aria-hidden="true"></span> 14 días de prueba gratuita</li>
+        <li><span class="dot" aria-hidden="true"></span> Cancela en cualquier momento</li>
+        <li><span class="dot" aria-hidden="true"></span> Soporte 24/7 en español</li>
+      </ul>
+
+    </aside>
+
+    <!-- ═══ HEADER ═══ -->
+    <header class="form-header">
+      <h2 class="form-header__title">Información personal</h2>
+      <div class="step-pills" aria-label="Paso 2 de 3">
+        <div class="pill pill--done"></div>
+        <div class="pill pill--active"></div>
+        <div class="pill"></div>
+      </div>
+    </header>
+
+    <!-- ═══ FORM ═══ -->
+    <main class="form-area">
+      <form class="form-grid" action="#" method="post" novalidate="novalidate">
+
+        <!-- Nombre -->
+        <div class="field field--half">
+          <label for="nombre">Nombre</label>
+          <div class="input-wrap">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+            </svg>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej. María" autocomplete="given-name" required="required" />
+          </div>
+        </div>
+
+        <!-- Apellido -->
+        <div class="field field--half">
+          <label for="apellido">Apellido</label>
+          <div class="input-wrap">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+            </svg>
+            <input type="text" id="apellido" name="apellido" placeholder="Ej. González" autocomplete="family-name" required="required" />
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="field field--full">
+          <label for="email">Correo electrónico</label>
+          <div class="input-wrap">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="M2 8l10 6 10-6" />
+            </svg>
+            <input type="email" id="email" name="email" placeholder="nombre@empresa.com" autocomplete="email" required="required" />
+          </div>
+          <span class="hint">Nunca compartiremos tu correo con terceros.</span>
+        </div>
+
+        <!-- Teléfono -->
+        <div class="field field--half">
+          <label for="tel">Teléfono</label>
+          <div class="input-wrap">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M22 16.92A17.94 17.94 0 0 1 17.09 22C7.6 22 2 16.4 2 6.91A17.94 17.94 0 0 1 7.08 2l3 6.5L8 11a17.08 17.08 0 0 0 5 5l2.5-2.08Z" />
+            </svg>
+            <input type="tel" id="tel" name="tel" placeholder="+593 99 000 0000" autocomplete="tel" />
+          </div>
+        </div>
+
+        <!-- País -->
+        <div class="field field--half">
+          <label for="pais">País</label>
+          <div class="input-wrap">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z" />
+            </svg>
+            <select id="pais" name="pais">
+              <option value="">Selecciona…</option>
+              <option value="ec" selected="selected">Ecuador</option>
+              <option value="co">Colombia</option>
+              <option value="pe">Perú</option>
+              <option value="mx">México</option>
+              <option value="ar">Argentina</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Rol -->
+        <fieldset class="field field--full field--radio">
+          <legend>Rol en tu equipo</legend>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="rol" value="dev" checked="checked" />
+              Desarrollador
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="rol" value="design" />
+              Diseñador
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="rol" value="pm" />
+              Product Manager
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="rol" value="otro" />
+              Otro
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Bio -->
+        <div class="field field--full">
+          <label for="bio">Cuéntanos sobre ti</label>
+          <div class="input-wrap input-wrap--textarea">
+            <svg class="input-icon input-icon--top" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+            </svg>
+            <textarea id="bio" name="bio" placeholder="Breve descripción, tu empresa o proyecto principal…" maxlength="200"></textarea>
+          </div>
+          <span class="hint">Opcional. Máximo 200 caracteres.</span>
+        </div>
+
+        <!-- Términos -->
+        <div class="field field--full">
+          <label class="checkbox-row">
+            <input type="checkbox" id="terminos" name="terminos" required="required" />
+            <span>Acepto los <a href="#">términos de servicio</a> y la <a href="#">política de privacidad</a> de Nexform.</span>
+          </label>
+        </div>
+
+      </form>
+    </main>
+
+    <!-- ═══ FOOTER / ACCIONES ═══ -->
+    <footer class="form-footer">
+      <button type="button" class="btn btn--ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path d="M19 12H5M12 5l-7 7 7 7" />
+        </svg>
+        Atrás
+      </button>
+      <button type="submit" form="registro" class="btn btn--primary">
+        Continuar
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </button>
+    </footer>
+
+  </div><!-- /.page-grid -->
+
+</body>
+</html>

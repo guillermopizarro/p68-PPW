@@ -1,0 +1,177 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f8;
+    color: #222;
+    line-height: 1.6;
+}
+
+.pagina {
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas:
+        "encabezado"
+        "contenido"
+        "pie";
+    grid-template-rows: auto 1fr auto;
+}
+
+.encabezado {
+    grid-area: encabezado;
+    background-color: #183153;
+    color: #ffffff;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.encabezado h1 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.contenido {
+    grid-area: contenido;
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+}
+
+.informacion,
+.formulario-contenedor {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.informacion h2,
+.formulario-contenedor h2 {
+    margin-bottom: 15px;
+    color: #183153;
+}
+
+.informacion ul {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Uso de Flexbox para organizar cada campo */
+.grupo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.grupo-formulario label,
+.grupo-formulario p {
+    font-weight: bold;
+    color: #333333;
+}
+
+.grupo-formulario input,
+.grupo-formulario select,
+.grupo-formulario textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bfc7d1;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.grupo-formulario input:focus,
+.grupo-formulario select:focus,
+.grupo-formulario textarea:focus {
+    outline: none;
+    border-color: #2f80ed;
+    box-shadow: 0 0 4px rgba(47, 128, 237, 0.4);
+}
+
+.grupo-completo {
+    grid-column: 1 / 3;
+}
+
+.opciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.opciones label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: normal;
+}
+
+.acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    background-color: #183153;
+    color: #ffffff;
+}
+
+button[type="reset"] {
+    background-color: #d9dee7;
+    color: #222222;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.pie-pagina {
+    grid-area: pie;
+    background-color: #183153;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Diseño adaptable */
+@media (max-width: 768px) {
+    .contenido {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario {
+        grid-template-columns: 1fr;
+    }
+
+    .grupo-completo {
+        grid-column: 1;
+    }
+
+    .acciones {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+}

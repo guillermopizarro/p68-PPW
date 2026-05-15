@@ -1,0 +1,498 @@
+/* ============================================================
+   styles.css — Nexform Registration Page
+   Estructura: CSS Grid (page-grid, form-grid) + Flexbox (fields,
+   header, footer, radio-group, sidebar, etc.)
+   ============================================================ */
+
+/* ── CUSTOM PROPERTIES ── */
+:root {
+  --bg:         #f0f5fb;   /* fondo principal — azul muy pálido           */
+  --surface:    #ffffff;   /* tarjetas / sidebar — blanco puro            */
+  --border:     #c2d4e8;   /* bordes — azul gris suave                    */
+  --accent:     #1a5fb4;   /* acento principal — azul corporativo         */
+  --accent2:    #2e86de;   /* acento secundario — azul medio              */
+  --text:       #0d1f35;   /* texto — azul marino casi negro              */
+  --muted:      #5a7a9e;   /* texto secundario — azul grisáceo            */
+  --radius:     10px;
+  --tr:         0.22s cubic-bezier(.4, 0, .2, 1);
+
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+}
+
+/* ── RESET ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── BASE ── */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 60% 50% at 80% 10%, rgba(200, 245, 90, .07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(90, 245, 200, .06) 0%, transparent 70%);
+  color: var(--text);
+  min-height: 100vh;
+
+  /* Flexbox para centrar la tarjeta en la pantalla */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ════════════════════════════════════════════
+   PAGE GRID  (CSS GRID — layout principal)
+   Columnas: sidebar | contenido principal
+   Filas:    header | form | footer
+   ════════════════════════════════════════════ */
+.page-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar form"
+    "sidebar footer";
+  width: 100%;
+  max-width: 880px;
+  min-height: 580px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, .5);
+}
+
+/* ════════════════════════════════════════════
+   SIDEBAR  (Flexbox — columna vertical)
+   ════════════════════════════════════════════ */
+.sidebar {
+  grid-area: sidebar;
+  background-color: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+
+  /* Flexbox: apila logo, texto y lista */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Degradado decorativo del sidebar */
+.sidebar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 120% 60% at 50% 100%, rgba(90, 245, 200, .08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Logo: Flexbox horizontal */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.logo-mark {
+  width: 34px;
+  height: 34px;
+  background-color: var(--accent);
+  border-radius: 8px;
+  flex-shrink: 0;
+
+  /* Flexbox para centrar el SVG */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-mark svg {
+  width: 18px;
+  height: 18px;
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+/* Títulos del sidebar */
+.sidebar-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.sidebar-title .accent {
+  color: var(--accent);
+}
+
+.sidebar-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-top: 0.75rem;
+}
+
+/* Feature list: Flexbox vertical */
+.feature-list {
+  list-style: none;
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent2);
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════
+   FORM HEADER  (Flexbox horizontal)
+   ════════════════════════════════════════════ */
+.form-header {
+  grid-area: header;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 2rem 2.5rem 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-header__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Step pills: Flexbox horizontal */
+.step-pills {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.pill {
+  width: 28px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: var(--border);
+  transition: background-color var(--tr);
+}
+
+.pill--active {
+  background-color: var(--accent);
+}
+
+.pill--done {
+  background-color: var(--accent2);
+}
+
+/* ════════════════════════════════════════════
+   FORM AREA  (CSS GRID — columnas de campos)
+   ════════════════════════════════════════════ */
+.form-area {
+  grid-area: form;
+  background-color: var(--bg);
+  padding: 1.75rem 2.5rem;
+  overflow-y: auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem 1.4rem;
+}
+
+/* Helpers de posición dentro del grid */
+.field--full  { grid-column: 1 / -1; }
+.field--half  { grid-column: span 1; }
+
+/* ════════════════════════════════════════════
+   FIELD  (Flexbox vertical: label + control)
+   ════════════════════════════════════════════ */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Input wrap: Flexbox horizontal (ícono + control) ── */
+.input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0 0.9rem;
+  transition: border-color var(--tr), box-shadow var(--tr);
+}
+
+.input-wrap:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(200, 245, 90, .12);
+}
+
+.input-wrap--textarea {
+  align-items: flex-start;
+  padding-top: 0.4rem;
+}
+
+/* Íconos SVG dentro del input-wrap */
+.input-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: var(--muted);
+  transition: color var(--tr);
+}
+
+.input-wrap:focus-within .input-icon {
+  color: var(--accent);
+}
+
+.input-icon--top {
+  margin-top: 0.35rem;
+}
+
+/* ── Inputs, select y textarea ── */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text);
+  padding: 0.7rem 0;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+select option {
+  background-color: var(--surface);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ── Hint ── */
+.hint {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+/* ════════════════════════════════════════════
+   FIELDSET / RADIO GROUP  (Flexbox horizontal)
+   ════════════════════════════════════════════ */
+.field--radio {
+  border: none;
+}
+
+.field--radio legend {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.45rem;
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text);
+  transition: border-color var(--tr), background-color var(--tr), color var(--tr);
+}
+
+.radio-option:has(input:checked) {
+  border-color: var(--accent);
+  background-color: rgba(200, 245, 90, .07);
+  color: var(--accent);
+}
+
+/* Ocultamos el radio nativo; la tarjeta entera es el indicador */
+.radio-option input[type="radio"] {
+  display: none;
+}
+
+/* ════════════════════════════════════════════
+   CHECKBOX ROW  (Flexbox horizontal)
+   ════════════════════════════════════════════ */
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.84rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.checkbox-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  margin-top: 2px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* ════════════════════════════════════════════
+   FORM FOOTER  (Flexbox horizontal)
+   ════════════════════════════════════════════ */
+.form-footer {
+  grid-area: footer;
+  background-color: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 2.5rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ── Botones: Flexbox horizontal ── */
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.6rem;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all var(--tr);
+}
+
+.btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.btn--ghost:hover {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+/* DESPUÉS */
+.btn--primary {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.btn--primary:hover {
+  background-color: #d4f96e;
+  box-shadow: 0 0 20px rgba(200, 245, 90, .3);
+  transform: translateY(-1px);
+}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE  — móvil
+   ════════════════════════════════════════════ */
+@media (max-width: 680px) {
+  .page-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "form"
+      "footer";
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field--half {
+    grid-column: 1 / -1;
+  }
+}
