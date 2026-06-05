@@ -1,4 +1,4 @@
-const URL_API = 'https://rickandmortyapi.com/api/character/'
+const URL_API = 'https://pokeapi.co/api/v2/pokemon/'
 
 function cargar_datos() {
     let personaje_id = document.getElementById('personaje_id')
@@ -25,7 +25,7 @@ function crear_personaje(objeto) {
     div.appendChild(h1)
 
     let image = document.createElement('img')
-    image.src = objeto.image
+    image.src = objeto.sprites.front_default
     div.appendChild(image)
 
     let contenedor = document.getElementById('container')
