@@ -24,3 +24,7 @@ caja.addEventListener('mousemove', function(valor) {
         caja.style.top = (valor.clientY + offset[1]) + 'px'
     }
 }, true)
+
+document.addEventListener("keydown", (event) => {
+    console.log("TECLA: " + event.key)
+})
